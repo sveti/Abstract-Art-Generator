@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F54148</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="panel left">
+        <div class="content">
+          <h2>F54148</h2>
+          <h2>Abstract art generator</h2>
+          <form action="javascript:void(0)">
+            <div class="formGroup">
+              <p class="formControl">Number of shapes:</p>
+              <input
+                class="formControlInput"
+                type="text"
+                name="shapesNumber"
+                id="shapesCount"
+                value="100"
+              />
+            </div>
+            <div class="formGroup">
+              <p class="formControl">Number of colors:</p>
+              <input
+                class="formControlInput"
+                type="text"
+                name="colorsNumber"
+                id="colorsCount"
+                value="20"
+              />
+            </div>
+            <div class="formGroup">
+              <p class="formControl">Library for colors:</p>
+              <div class="radioButtonsGroup">
+                <label>
+                  <input
+                    type="radio"
+                    name="colorsLibrary"
+                    id="randomColorJs"
+                    onclick="libraryChange(this);"
+                    checked
+                  />
+                  Randomcolor
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="colorsLibrary"
+                    id="pleaseJs"
+                    onclick="libraryChange(this);"
+                  />
+                  Please.js
+                </label>
+              </div>
+            </div>
+            <div class="formControl">
+              <p>Color Palette:</p>
+              <div class="moreCols">
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="monochrome"
+                    id="bw"
+                    class="colors"
+                  />
+                  Monochrome
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="red"
+                    id="red"
+                    class="colors"
+                  />
+                  Red
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="orange"
+                    id="orange"
+                    class="colors"
+                    checked
+                  />
+                  Orange
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="yellow"
+                    id="yellow"
+                    class="colors"
+                  />
+                  Yellow
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="green"
+                    id="green"
+                    class="colors"
+                  />
+                  Green
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="blue"
+                    id="blue"
+                    class="colors"
+                    checked
+                  />
+                  Blue
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="purple"
+                    id="purple"
+                    class="colors"
+                  />
+                  Purple
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="colors"
+                    value="pink"
+                    id="pink"
+                    class="colors"
+                  />
+                  Pink
+                </label>
+              </div>
+            </div>
+            <div class="formControl" id="libraryDependingContent">
+              <p>Luminosity:</p>
+              <div class="treeCols">
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="luminosity"
+                    id="bright"
+                    value="bright"
+                    checked
+                  />
+                  Bright
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="luminosity"
+                    id="light"
+                    value="light"
+                  />
+                  Light
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    name="luminosity"
+                    id="dark"
+                    value="dark"
+                  />
+                  Dark
+                </label>
+              </div>
+            </div>
+            <div class="formControl">
+              <p>Shapes:</p>
+              <div class="treeCols">
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    class="shapes"
+                    name="squares"
+                    id="squares"
+                    checked
+                  />
+                  Squares
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    class="shapes"
+                    name="squircle"
+                    id="squircle"
+                  />
+                  Squircle
+                </label>
+                <label class="formControl">
+                  <input
+                    type="checkbox"
+                    class="shapes"
+                    name="circles"
+                    id="circles"
+                    checked
+                  />
+                  Circles
+                </label>
+              </div>
+            </div>
+            <div class="formGroup">
+              <p class="formControl">Rubber ducks?</p>
+              <label class="formControl">
+                <input
+                  type="checkbox"
+                  name="rubberDucks"
+                  id="rubberDucks"
+                  onClick="rubberDuckClicked()"
+                  class="rubberDuckCheckBox"
+                />
+                Rubber ducks.
+              </label>
+            </div>
+          </form>
+          <button class="generate" role="button" id="generateButton">
+            Generate
+          </button>
+        </div>
+      </div>
+
+      <div class="panel right" id="field"></div>
+    </div>
+
+    <audio id="audio" src="quack.mp3"></audio>
+  </body>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.6.1/randomColor.min.js"
+    integrity="sha512-vPeZ7JCboHcfpqSx5ZD+/jpEhS4JpXxfz9orSvAPPj0EKUVShU2tgy7XkU+oujBJKnWmu4hU7r9MMQNWPfXsYw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pleasejs/0.4.2/Please.min.js"
+    integrity="sha512-XTYPyRh2VppCJQXdjcQrCXVpleLCiMB2PSztUvaeQJvT1mhNxkAKMWH7F2hE1C+yxngS4kchaMM+wkv8HVQ4Ww=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+  <script src="index.js"></script>
+</html>
